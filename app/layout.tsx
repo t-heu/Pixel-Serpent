@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#020817" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://reletra.onrender.com/" />
+        <link rel="canonical" href="https://pixelserpent.onrender.com/" />
         <meta name="keywords" content="reletra, palavras, wordle, palavra" />
         <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
@@ -29,10 +29,10 @@ export default function RootLayout({
         {/* Open Graph */}
         <meta property="og:title" content="Pixel Serpent" />
         <meta property="og:description" content="Desafie seu vocabulário." />
-        <meta property="og:image" content="https://reletra.onrender.com/assets/og-image.png" />
+        <meta property="og:image" content="https://pixelserpent.onrender.com/assets/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:url" content="https://reletra.onrender.com/" />
+        <meta property="og:url" content="https://pixelserpent.onrender.com/" />
         <meta property="og:type" content="website" />
         {/* PWA / Icons */}
         <link rel="apple-touch-icon" href="/assets/apple-icon.png" sizes="180x180" />
