@@ -43,12 +43,23 @@ export interface GameStats {
     fast: number
     armored: number
     quantum: number
+    ghost: number
+    magnetic: number
+    crystal: number
+    cosmic: number
+    divine: number
   }
   powerUpsUsed: {
     speed: number
     shield: number
     teleport: number
     size: number
+  }
+  specialAbilitiesUsed: {
+    ghostWalk: number
+    magneticPull: number
+    crystalBonus: number
+    autoTeleport: number
   }
   levelsReached: number[]
   achievements: string[]

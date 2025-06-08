@@ -39,6 +39,9 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/assets/web-app-manifest-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/assets/web-app-manifest-512x512.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
         {/* AdSense */}
         <AdSense pId="ca-pub-7158647172444246"/>
       </head>

@@ -29,17 +29,20 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
   const achievementProgress = Math.round((earnedAchievements / ACHIEVEMENTS.length) * 100)
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-4">
+    <div className="min-h-screen bg-slate-900 text-white p-4 pixel-font">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="font-pixel text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="pixel-title font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Estatísticas
             </h1>
-            <p className="font-pixel text-gray-400 mt-1">Seu progresso no Neon Snake</p>
+            <p className="text-gray-400 mt-1 pixel-ui">Seu progresso no Neon Snake</p>
           </div>
-          <button onClick={onBack} className="font-pixel px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+          <button
+            onClick={onBack}
+            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors pixel-button border border-gray-500"
+          >
             ← Voltar
           </button>
         </div>
@@ -54,8 +57,10 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`font-pixel px-4 py-2 rounded-lg font-medium transition-colors whitespace-nowrap ${
-                activeTab === tab.id ? "bg-purple-600 text-white" : "bg-slate-800 text-gray-300 hover:bg-slate-700"
+              className={`px-4 py-2 rounded-lg font-medium transition-colors whitespace-nowrap pixel-button border ${
+                activeTab === tab.id
+                  ? "bg-purple-600 text-white border-purple-400"
+                  : "bg-slate-800 text-gray-300 hover:bg-slate-700 border-slate-600"
               }`}
             >
               {tab.icon} {tab.label}
@@ -69,20 +74,20 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
             {/* Main Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                <div className="font-pixel text-2xl font-bold text-green-400">{stats.totalGames}</div>
-                <div className="font-pixel text-sm text-gray-400">Jogos Totais</div>
+                <div className="pixel-stats font-bold text-green-400">{stats.totalGames}</div>
+                <div className="pixel-ui text-gray-400">Jogos Totais</div>
               </div>
               <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                <div className="font-pixel text-2xl font-bold text-blue-400">{stats.bestScore.toLocaleString()}</div>
-                <div className="font-pixel text-sm text-gray-400">Melhor Pontuação</div>
+                <div className="pixel-stats font-bold text-blue-400">{stats.bestScore.toLocaleString()}</div>
+                <div className="pixel-ui text-gray-400">Melhor Pontuação</div>
               </div>
               <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                <div className="font-pixel text-2xl font-bold text-purple-400">{stats.longestSnake}</div>
-                <div className="font-pixel text-sm text-gray-400">Maior Cobra</div>
+                <div className="pixel-stats font-bold text-purple-400">{stats.longestSnake}</div>
+                <div className="pixel-ui text-gray-400">Maior Cobra</div>
               </div>
               <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                <div className="font-pixel text-2xl font-bold text-yellow-400">{formatTime(stats.totalTime)}</div>
-                <div className="font-pixel text-sm text-gray-400">Tempo Total</div>
+                <div className="pixel-stats font-bold text-yellow-400">{formatTime(stats.totalTime)}</div>
+                <div className="pixel-ui text-gray-400">Tempo Total</div>
               </div>
             </div>
 
@@ -90,11 +95,11 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
             <div className="grid md:grid-cols-2 gap-6">
               {/* Food Stats */}
               <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="font-pixel text-xl font-bold mb-4 text-green-400">🍎 Comidas Consumidas</h3>
+                <h3 className="pixel-subtitle font-bold mb-4 text-green-400">🍎 Comidas Consumidas</h3>
                 <div className="space-y-3">
                   {Object.entries(stats.foodEaten).map(([type, count]) => (
                     <div key={type} className="flex justify-between items-center">
-                      <span className="font-pixel capitalize text-gray-300">{type}</span>
+                      <span className="capitalize text-gray-300 pixel-ui">{type}</span>
                       <div className="flex items-center gap-2">
                         <div className="w-20 bg-slate-700 rounded-full h-2">
                           <div
@@ -102,14 +107,14 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                             style={{ width: `${totalFoodEaten > 0 ? (count / totalFoodEaten) * 100 : 0}%` }}
                           ></div>
                         </div>
-                        <span className="font-pixel text-white font-bold w-8 text-right">{count}</span>
+                        <span className="text-white font-bold w-8 text-right pixel-ui">{count}</span>
                       </div>
                     </div>
                   ))}
                   <div className="pt-2 border-t border-slate-600">
                     <div className="flex justify-between text-lg font-bold">
-                      <span className="font-pixel">Total</span>
-                      <span className="font-pixel text-green-400">{totalFoodEaten}</span>
+                      <span>Total</span>
+                      <span className="text-green-400">{totalFoodEaten}</span>
                     </div>
                   </div>
                 </div>
@@ -117,11 +122,11 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
 
               {/* Evolution Stats */}
               <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="font-pixel text-xl font-bold mb-4 text-purple-400">🧬 Evoluções Alcançadas</h3>
+                <h3 className="pixel-subtitle font-bold mb-4 text-purple-400">🧬 Evoluções Alcançadas</h3>
                 <div className="space-y-3">
                   {Object.entries(stats.evolutionsReached).map(([evolution, count], index) => (
                     <div key={evolution} className="flex justify-between items-center">
-                      <span className="font-pixel text-gray-300">{EVOLUTION_NAMES[index]}</span>
+                      <span className="text-gray-300 pixel-ui">{EVOLUTION_NAMES[index]}</span>
                       <div className="flex items-center gap-2">
                         <div className="w-20 bg-slate-700 rounded-full h-2">
                           <div
@@ -131,7 +136,7 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                             }}
                           ></div>
                         </div>
-                        <span className="font-pixel text-white font-bold w-8 text-right">{count}</span>
+                        <span className="text-white font-bold w-8 text-right pixel-ui">{count}</span>
                       </div>
                     </div>
                   ))}
@@ -140,11 +145,11 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
 
               {/* Power-up Stats */}
               <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="font-pixel text-xl font-bold mb-4 text-blue-400">⚡ Power-ups Utilizados</h3>
+                <h3 className="pixel-subtitle font-bold mb-4 text-blue-400">⚡ Power-ups Utilizados</h3>
                 <div className="space-y-3">
                   {Object.entries(stats.powerUpsUsed).map(([type, count]) => (
                     <div key={type} className="flex justify-between items-center">
-                      <span className="font-pixel capitalize text-gray-300">{type}</span>
+                      <span className="capitalize text-gray-300 pixel-ui">{type}</span>
                       <div className="flex items-center gap-2">
                         <div className="w-20 bg-slate-700 rounded-full h-2">
                           <div
@@ -154,14 +159,14 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                             }}
                           ></div>
                         </div>
-                        <span className="font-pixel text-white font-bold w-8 text-right">{count}</span>
+                        <span className="text-white font-bold w-8 text-right pixel-ui">{count}</span>
                       </div>
                     </div>
                   ))}
                   <div className="pt-2 border-t border-slate-600">
                     <div className="flex justify-between text-lg font-bold">
-                      <span className="font-pixel">Total</span>
-                      <span className="font-pixel text-blue-400">{totalPowerUpsUsed}</span>
+                      <span>Total</span>
+                      <span className="text-blue-400">{totalPowerUpsUsed}</span>
                     </div>
                   </div>
                 </div>
@@ -169,23 +174,23 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
 
               {/* Performance Stats */}
               <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 className="font-pixel text-xl font-bold mb-4 text-yellow-400">📈 Performance</h3>
+                <h3 className="pixel-subtitle font-bold mb-4 text-yellow-400">📈 Performance</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="font-pixel text-gray-300">Pontuação Média</span>
-                    <span className="font-pixel text-white font-bold">{averageScore.toLocaleString()}</span>
+                    <span className="text-gray-300 pixel-ui">Pontuação Média</span>
+                    <span className="text-white font-bold pixel-ui">{averageScore.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-pixel text-gray-300">Tempo Médio</span>
-                    <span className="font-pixel text-white font-bold">{formatTime(averageTime)}</span>
+                    <span className="text-gray-300 pixel-ui">Tempo Médio</span>
+                    <span className="text-white font-bold pixel-ui">{formatTime(averageTime)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-pixel text-gray-300">Maior Nível</span>
-                    <span className="font-pixel text-white font-bold">{Math.max(...stats.levelsReached, 0)}</span>
+                    <span className="text-gray-300 pixel-ui">Maior Nível</span>
+                    <span className="text-white font-bold pixel-ui">{Math.max(...stats.levelsReached, 0)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-pixel text-gray-300">Última Partida</span>
-                    <span className="font-pixel text-white font-bold">
+                    <span className="text-gray-300 pixel-ui">Última Partida</span>
+                    <span className="text-white font-bold pixel-ui">
                       {stats.lastPlayed ? new Date(stats.lastPlayed).toLocaleDateString() : "Nunca"}
                     </span>
                   </div>
@@ -201,7 +206,7 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
             {/* Progress Overview */}
             <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="font-pixel text-xl font-bold text-yellow-400">🏆 Progresso das Conquistas</h3>
+                <h3 className="text-xl font-bold text-yellow-400">🏆 Progresso das Conquistas</h3>
                 <span className="text-2xl font-bold text-yellow-400">
                   {earnedAchievements}/{ACHIEVEMENTS.length}
                 </span>
@@ -212,7 +217,7 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                   style={{ width: `${achievementProgress}%` }}
                 ></div>
               </div>
-              <p className="font-pixel text-gray-400 text-center">{achievementProgress}% Completo</p>
+              <p className="text-gray-400 text-center">{achievementProgress}% Completo</p>
             </div>
 
             {/* Achievements Grid */}
@@ -227,10 +232,10 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                   <div className="flex items-start gap-3">
                     <div className={`text-2xl ${achievement.earned ? "grayscale-0" : "grayscale opacity-50"}`}>🏆</div>
                     <div className="flex-1">
-                      <h4 className={`font-pixel font-bold ${achievement.earned ? "text-yellow-400" : "text-gray-400"}`}>
+                      <h4 className={`font-bold ${achievement.earned ? "text-yellow-400" : "text-gray-400"}`}>
                         {achievement.name}
                       </h4>
-                      <p className={`font-pixel text-sm ${achievement.earned ? "text-gray-300" : "text-gray-500"}`}>
+                      <p className={`text-sm ${achievement.earned ? "text-gray-300" : "text-gray-500"}`}>
                         {achievement.description}
                       </p>
                     </div>
@@ -246,9 +251,9 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
         {activeTab === "history" && (
           <div className="space-y-6">
             <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-              <h3 className="font-pixel text-xl font-bold mb-4 text-blue-400">📈 Últimas Partidas</h3>
+              <h3 className="text-xl font-bold mb-4 text-blue-400">📈 Últimas Partidas</h3>
               {recentSessions.length === 0 ? (
-                <p className="font-pixel text-gray-400 text-center py-8">Nenhuma partida registrada ainda</p>
+                <p className="text-gray-400 text-center py-8">Nenhuma partida registrada ainda</p>
               ) : (
                 <div className="space-y-3">
                   {recentSessions
@@ -267,8 +272,8 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                                   : "✨"}
                           </div>
                           <div>
-                            <div className="font-pixel font-bold text-white">{session.score.toLocaleString()} pts</div>
-                            <div className="font-pixel text-sm text-gray-400">
+                            <div className="font-bold text-white">{session.score.toLocaleString()} pts</div>
+                            <div className="text-sm text-gray-400">
                               Nível {session.level} • {EVOLUTION_NAMES[session.evolution]}
                             </div>
                           </div>
@@ -295,7 +300,7 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
                 onResetStats()
               }
             }}
-            className="font-pixel px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg transition-colors"
+            className="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg transition-colors pixel-button border-2 border-red-400"
           >
             🗑️ Resetar Estatísticas
           </button>

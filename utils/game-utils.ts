@@ -37,12 +37,23 @@ export const getDefaultStats = (): GameStats => ({
     fast: 0,
     armored: 0,
     quantum: 0,
+    ghost: 0,
+    magnetic: 0,
+    crystal: 0,
+    cosmic: 0,
+    divine: 0,
   },
   powerUpsUsed: {
     speed: 0,
     shield: 0,
     teleport: 0,
     size: 0,
+  },
+  specialAbilitiesUsed: {
+    ghostWalk: 0,
+    magneticPull: 0,
+    crystalBonus: 0,
+    autoTeleport: 0,
   },
   levelsReached: [],
   achievements: [],
@@ -88,6 +99,12 @@ export const checkAchievements = (stats: GameStats, session: GameSession): strin
       case "score_1000":
         earned = session.score >= 1000
         break
+      case "score_5000":
+        earned = session.score >= 5000
+        break
+      case "score_10000":
+        earned = session.score >= 10000
+        break
       case "evolution_fast":
         earned = session.evolution >= 1
         break
@@ -97,11 +114,32 @@ export const checkAchievements = (stats: GameStats, session: GameSession): strin
       case "evolution_quantum":
         earned = session.evolution >= 3
         break
+      case "evolution_ghost":
+        earned = session.evolution >= 4
+        break
+      case "evolution_magnetic":
+        earned = session.evolution >= 5
+        break
+      case "evolution_crystal":
+        earned = session.evolution >= 6
+        break
+      case "evolution_cosmic":
+        earned = session.evolution >= 7
+        break
+      case "evolution_divine":
+        earned = session.evolution >= 8
+        break
       case "snake_20":
         earned = session.snakeLength >= 20
         break
       case "snake_50":
         earned = session.snakeLength >= 50
+        break
+      case "snake_100":
+        earned = session.snakeLength >= 100
+        break
+      case "snake_200":
+        earned = session.snakeLength >= 200
         break
       case "level_5":
         earned = session.level >= 5
@@ -109,8 +147,14 @@ export const checkAchievements = (stats: GameStats, session: GameSession): strin
       case "level_10":
         earned = session.level >= 10
         break
+      case "level_20":
+        earned = session.level >= 20
+        break
       case "food_100":
         earned = Object.values(stats.foodEaten).reduce((a, b) => a + b, 0) >= 100
+        break
+      case "food_500":
+        earned = Object.values(stats.foodEaten).reduce((a, b) => a + b, 0) >= 500
         break
       case "powerup_master":
         earned = Object.values(stats.powerUpsUsed).every((count) => count > 0)
@@ -118,8 +162,20 @@ export const checkAchievements = (stats: GameStats, session: GameSession): strin
       case "survivor":
         earned = session.timeAlive >= 300 // 5 minutes
         break
+      case "marathon":
+        earned = session.timeAlive >= 600 // 10 minutes
+        break
       case "speed_demon":
         earned = stats.powerUpsUsed.speed >= 10
+        break
+      case "ghost_walker":
+        earned = stats.specialAbilitiesUsed.ghostWalk >= 50
+        break
+      case "magnet_master":
+        earned = stats.specialAbilitiesUsed.magneticPull >= 100
+        break
+      case "crystal_collector":
+        earned = stats.specialAbilitiesUsed.crystalBonus >= 10000
         break
     }
 
