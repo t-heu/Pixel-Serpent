@@ -1,6 +1,6 @@
 // next-sitemap.config.js
 module.exports = {
-  siteUrl: 'https://reletra.onrender.com',
+  siteUrl: 'https://pixelserpent.onrender.com',
   generateRobotsTxt: true,
   outDir: './out',
 };
