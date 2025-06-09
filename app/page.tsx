@@ -958,21 +958,23 @@ export default function NeonSnakePerformance() {
       )}
 
       {/* Power-ups display */}
-      {displayPowerUps.length > 0 && (
-        <div className="flex gap-2 mb-4 justify-center">
-          {displayPowerUps.map((powerUp, index) => (
-            <div
-              key={index}
-              className="px-3 py-1 bg-purple-600 rounded-full font-bold flex items-center gap-1 border border-purple-400 pixel-ui"
-            >
-              {powerUp.type === "speed" && "⚡"}
-              {powerUp.type === "shield" && "🛡️"}
-              {powerUp.type === "teleport" && "🌀"}
-              <span>{Math.ceil(powerUp.duration / 60)}s</span>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="h-6 mb-2 justify-center">
+        {displayPowerUps.length > 0 && (
+          <div className="flex gap-2 justify-center">
+            {displayPowerUps.map((powerUp, index) => (
+              <div
+                key={index}
+                className="px-3 py-1 bg-purple-600 rounded-full font-bold flex items-center gap-1 border border-purple-400 pixel-ui"
+              >
+                {powerUp.type === "speed" && "⚡"}
+                {powerUp.type === "shield" && "🛡️"}
+                {powerUp.type === "teleport" && "🌀"}
+                <span>{Math.ceil(powerUp.duration / 60)}s</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Evolution Progress */}
       <div className="mb-4 text-center">
@@ -1006,7 +1008,7 @@ export default function NeonSnakePerformance() {
       </div>
 
       {/* Mobile Controls */}
-      <div className="md:hidden">
+      <div className="md:hidden mb-2">
         <div className="grid grid-cols-3 gap-2 max-w-48 mx-auto">
           <div></div>
           <button
@@ -1015,13 +1017,6 @@ export default function NeonSnakePerformance() {
           >
             ⬆️
           </button>
-          <div></div>
-          <button
-            onTouchStart={() => directionRef.current.x !== 1 && (nextDirectionRef.current = { x: -1, y: 0 })}
-            className="bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-2xl active:bg-slate-500 border border-slate-500"
-          >
-            ⬅️
-          </button>
           <button
             onTouchStart={pauseGame}
             className="bg-blue-600 hover:bg-blue-500 p-4 rounded-lg text-xl active:bg-blue-400 border border-blue-400"
@@ -1029,19 +1024,23 @@ export default function NeonSnakePerformance() {
             {gameState === "paused" ? "▶️" : "⏸️"}
           </button>
           <button
-            onTouchStart={() => directionRef.current.x !== -1 && (nextDirectionRef.current = { x: 1, y: 0 })}
+            onTouchStart={() => directionRef.current.x !== 1 && (nextDirectionRef.current = { x: -1, y: 0 })}
             className="bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-2xl active:bg-slate-500 border border-slate-500"
           >
-            ➡️
+            ⬅️
           </button>
-          <div></div>
           <button
             onTouchStart={() => directionRef.current.y !== -1 && (nextDirectionRef.current = { x: 0, y: 1 })}
             className="bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-2xl active:bg-slate-500 border border-slate-500"
           >
             ⬇️
           </button>
-          <div></div>
+          <button
+            onTouchStart={() => directionRef.current.x !== -1 && (nextDirectionRef.current = { x: 1, y: 0 })}
+            className="bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-2xl active:bg-slate-500 border border-slate-500"
+          >
+            ➡️
+          </button>
         </div>
       </div>
 

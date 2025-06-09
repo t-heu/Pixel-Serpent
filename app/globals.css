@@ -14,7 +14,7 @@
 
 .pixel-title {
   font-family: "Press Start 2P", monospace;
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: clamp(1.2rem, 4vw, 3rem);
   line-height: 1.2;
   letter-spacing: 0.1em;
 }

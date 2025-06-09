@@ -48,7 +48,7 @@ export default function StatsScreen({ stats, onBack, onResetStats }: StatsScreen
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-6 overflow-x-auto">
+        <div className="flex gap-2 mb-4 overflow-x-auto py-2">
           {[
             { id: "overview", label: "Visão Geral", icon: "📊" },
             { id: "achievements", label: "Conquistas", icon: "🏆" },
